@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { AppType } from '$lib/hono';
-    import { hcs } from '$lib/honoSuperjson';
+    import { hcs } from '$lib/honoSuperjson/client';
 
     const client = hcs<AppType>('/api');
 

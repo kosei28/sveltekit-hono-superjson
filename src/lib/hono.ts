@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
-import { jsonS } from './honoSuperjson';
+import { jsonS } from '$lib/honoSuperjson/response';
 
 export const app = new Hono();
 
