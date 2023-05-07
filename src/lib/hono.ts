@@ -6,6 +6,7 @@ import { jsonS } from './honoSuperjson';
 export const app = new Hono();
 
 const route = app
+    .get('/', (c) => c.jsonT('Hono!'))
     .get(
         '/hello',
         zValidator(

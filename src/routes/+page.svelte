@@ -4,8 +4,15 @@
 
     const client = hcs<AppType>('/api');
 
+    const rootPromise = getRoot();
     const helloPromise = getHello();
     const currentDatePromise = getCurrentDate();
+
+    async function getRoot() {
+        const res = await client.index.$get({});
+        const data = await res.json();
+        return data;
+    }
 
     async function getHello() {
         const res = await client.hello.$get({ query: { name: 'Hono' } });
@@ -19,6 +26,15 @@
         return data;
     }
 </script>
+
+<h2>/</h2>
+{#await rootPromise}
+    <p>Loading...</p>
+{:then root}
+    <p>{root}</p>
+{:catch error}
+    <p style="color: red">{error.message}</p>
+{/await}
 
 <h2>/hello</h2>
 {#await helloPromise}
