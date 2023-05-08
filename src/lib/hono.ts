@@ -3,7 +3,7 @@ import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { jsonS } from '$lib/honoSuperjson/response';
 
-export const app = new Hono();
+export const app = new Hono().basePath('/api');
 
 const route = app
     .get('/', (c) => c.jsonT('Hono!'))

@@ -2,14 +2,14 @@
     import type { AppType } from '$lib/hono';
     import { hcs } from '$lib/honoSuperjson/client';
 
-    const client = hcs<AppType>('/api');
+    const client = hcs<AppType>('/').api;
 
     const rootPromise = getRoot();
     const helloPromise = getHello();
     const currentDatePromise = getCurrentDate();
 
     async function getRoot() {
-        const res = await client.index.$get({});
+        const res = await client.$get({});
         const data = await res.json();
         return data;
     }
